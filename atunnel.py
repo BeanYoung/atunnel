@@ -56,7 +56,6 @@ class Tunnel():
             except ConnectionError:
                 break
 
-            print(len(data))
             if not data:
                 break
             writer.write(processer(data))
@@ -79,8 +78,6 @@ if __name__ == '__main__':
     parser.add_argument('--backend', default='127.0.0.1:6400', type=str,
                         help='host:port of the backend')
     args = parser.parse_args()
-    print(args)
-
 
     event_loop = asyncio.get_event_loop()
     tunnel = Tunnel(args.secret, args.client_mode, args.backend, event_loop)
